@@ -3,7 +3,8 @@
 Created on Sat Feb 06 13:14:31 2016
 @author: David
 """
-names = ['Aryan Chhabria','Laura Pang','Minah Seo','Daniel Yu']
+#names = ['Aryan Chhabria','Laura Pang','Minah Seo','Daniel Yu','Aaron Gokaslan']
+names = ['Laura Pang','Daniel Yu','Aaron Gokaslan', 'Birol Senturk']
 
 from projectoxford import Client
 import urllib, cStringIO, json
@@ -11,7 +12,7 @@ from PIL import Image
 
 def match():
     client = Client.Face('113bf51955964f02a2215d74f9b3078b') #API KEY
-    file = cStringIO.StringIO(urllib.urlopen("http://172.18.141.55:8080/photo.jpg").read())
+    file = cStringIO.StringIO(urllib.urlopen("http://10.38.42.133:8080/photo.jpg").read())
     img = Image.open(file)
     loc = "cur_pic.jpg"
     img.save(loc,"JPEG") #saving image
@@ -33,6 +34,7 @@ def match():
         ver = client.verify(snapId[0]['faceId'], str(friend_id))
         dic[friend]=ver
         #print ver
+    
     ls = []
     for name in dic:
         if (dic[name]['isIdentical'] ==True):
