@@ -37,8 +37,12 @@ def match():
         #print ver
     ls = []
     for name in dic:
-        ls.append((name, dic[name]['confidence']))
+        if (dic[name]['isIdentical'] ==True):
+            ls.append((name, dic[name]['confidence']))
         print "%s %s %s" %(name,dic[name]['isIdentical'],dic[name]['confidence'])
+    print ls
     ls.sort(key=lambda x: x[1])
-    sim_person = ls[-1]
-    return sim_person
+    if not ls:
+        sim_person = ls[-1]
+        return sim_person
+    return 'no similar matches found'
