@@ -14,7 +14,7 @@ def match():
     client = Client.Face('113bf51955964f02a2215d74f9b3078b') #API KEY
     file = cStringIO.StringIO(urllib.urlopen("http://172.18.141.55:8080/photo.jpg").read())
     img = Image.open(file)
-    loc = "C:\\Users\\David\\Pictures\\cur_pic.jpg"
+    loc = "cur_pic.jpg"
     img.save(loc,"JPEG") #saving image
     snapId = client.detect({'path': loc})
     
