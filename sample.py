@@ -39,8 +39,8 @@ def match():
             ls.append((name, dic[name]['confidence']))
         print "%s %s %s" %(name,dic[name]['isIdentical'],dic[name]['confidence'])
     print ls
-    ls.sort(key=lambda x: x[1])
-    if not ls:
+    if len(ls)!=0:
+        ls.sort(key=lambda x: x[1])
         sim_person = ls[-1]
-        return sim_person
+        return str(sim_person)
     return 'no similar matches found'
