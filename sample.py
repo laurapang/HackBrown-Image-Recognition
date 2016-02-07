@@ -27,14 +27,16 @@ urls = {}
 for person in data["contacts"]:
 	urls[person["name"]] = person["profile_image_url"]
 
-names = ['Aryan Chhabria','Laura Pang']
+names = ['Aryan Chhabria','Laura Pang','Minah Seo','Daniel Yu']
 dic = {}
 #dic['name'] = str(result2[0]['faceId'])
+#for friend in names:
+#    dic[friend]= client.detect({'url': urls[friend]})[0]['faceId']
+#    print "%s %s" %(friend,dic[friend])
 for friend in names:
-    dic[friend]= client.detect({'url': urls[friend]})[0]['faceId']
-    print "%s %s" %(friend,dic[friend])
-for friend in names:
-    print friend
-    ver = client.verify(snapId[0]['faceId'], str(dic[friend]))
-    print ver
-    
+    friend_id = client.detect({'url': urls[friend]})[0]['faceId']
+    ver = client.verify(snapId[0]['faceId'], str(friend_id))
+    dic[friend]=ver
+    #print ver
+for name in dic:
+    print "%s %s %s" %(name,dic[name]['isIdentical'],dic[name]['confidence'])
