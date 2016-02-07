@@ -5,7 +5,7 @@ Created on Sat Feb 06 13:14:31 2016
 @author: David
 """
 from projectoxford import Client
-import urllib, cStringIO
+import urllib, cStringIO, json
 from PIL import Image
 
 client = Client.Face('113bf51955964f02a2215d74f9b3078b') #API KEY
@@ -17,3 +17,12 @@ img.save(loc,"JPEG") #saving image
 #result2 = client.detect({'url': 'https://upload.wikimedia.org/wikipedia/commons/1/19/Bill_Gates_June_2015.jpg'})
 #print (result)
 #test = client.verify('894a908c-6f38-48cd-a951-ee7dbde813d8', 'efedfac6-243e-4829-8502-3b2b932fe976')
+
+with open("Data.json") as data_file:
+	data = json.load(data_file)
+
+urls = {}
+
+for person in data["contacts"]:
+	urls[person["name"]] = person["profile_image_url"]
+
