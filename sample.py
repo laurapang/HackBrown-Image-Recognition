@@ -17,11 +17,14 @@ def match():
     loc = "cur_pic.jpg"
     img.save(loc,"JPEG") #saving image
     snapId = client.detect({'path': loc})
-    
+    if not snapId:
+        print 'cannot find a face'
+        return
     #print snapId
     
     with open("Data.json") as data_file:
     	data = json.load(data_file)
+     
     urls = {}
     for person in data["contacts"]:
     	urls[person["name"]] = person["profile_image_url"]
