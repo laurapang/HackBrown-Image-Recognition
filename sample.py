@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Feb 06 13:14:31 2016
-
 @author: David
 """
 names = ['Aryan Chhabria','Laura Pang','Minah Seo','Daniel Yu']
@@ -18,16 +17,15 @@ def match():
     img.save(loc,"JPEG") #saving image
     snapId = client.detect({'path': loc})
     if not snapId:
-        print 'cannot find a face'
-        return
+        return 'cannot find a face'
     #print snapId
     
     with open("Data.json") as data_file:
-    	data = json.load(data_file)
+        data = json.load(data_file)
      
     urls = {}
     for person in data["contacts"]:
-    	urls[person["name"]] = person["profile_image_url"]
+        urls[person["name"]] = person["profile_image_url"]
     
     dic = {}
     for friend in names:
