@@ -14,8 +14,9 @@ def match():
     client = Client.Face('113bf51955964f02a2215d74f9b3078b') #API KEY
     file = cStringIO.StringIO(urllib.urlopen("http://10.38.42.133:8080/photo.jpg").read())
     img = Image.open(file)
+    img = img.rotate(270)
     loc = "cur_pic.jpg"
-    img.save(loc,"JPEG") #saving image
+    img.save(loc,"JPEG") #saving image   
     snapId = client.detect({'path': loc})
     if not snapId:
         return 'cannot find a face'
